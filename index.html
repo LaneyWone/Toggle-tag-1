@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>定位方式实现的jQuery tab标签切换效果</title>
+<style>
+*{margin:0;padding:0;list-style:none;border:none;}
+body{font:normal 12px/normal '宋体';}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+/*星期更新*/
+.weeks{ width:500px; height:250px;margin:100px auto;border:1px solid #555;}
+.weekItem{width:500px;height:30px;border-bottom:2px solid #444;}
+.weekItem li{float:left;height:30px;width:71px;line-height:30px;text-align:center;cursor:pointer;overflow:hidden;}
+.weekItem li.on{background:#444;color:#fff;width:74px;}
+.weekItem li.hover{background:#555;color:#fff;}
+.box01_c{width:500px;height:208px; padding:10px 0 0px 0;position:relative;overflow:auto;}
+.box01_c dl{padding:0 10px 10px 25px;line-height:26px;}
+.box01_c dl dt{color:#999;line-height:1;padding-bottom:10px;}
+.box01_c dl dd{height:26px;overflow:hidden;}
+.box01_c dl dd a{color:#282828;}
+.box01_c dl dd span{float:right;color:#999;}
+.box01_c dl dd span.today{color:#f60;}
+</style>
+</head>
+<body>
+<!-- 代码部分begin -->
+<div class="weeks">
+  <ul class="weekItem" id="weektab">
+    <li>周一</li>
+    <li>周二</li>
+    <li>周三</li>
+    <li>周四</li>
+    <li>周五</li>
+    <li>周六</li>
+    <li>周日</li>
+  </ul>
+  <div class="box01_c" id="weekcon">
+    <div style="position:relative;">
+      <dl>
+        <dt>周一</dt>
+        <dd><span>11-1日更新</span><a href="#">今天是星期一星期一星期一</a></dd>
+        <dd><span>11-1日更新</span><a href="#">今天是星期一星期一星期一</a></dd>
+        <dd><span>11-1日更新</span><a href="#">今天是星期一星期一星期一</a></dd>
+      </dl>
+      <dl>
+        <dt>周二</dt>
+        <dd><span>11-2日更新</span><a href="#">星期二星期二星期二</a></dd>
+        <dd><span>11-2日更新</span><a href="#">星期二星期二星期二</a></dd>
+        <dd><span>11-2日更新</span><a href="#">星期二星期二星期二</a></dd>
+        <dd><span>11-2日更新</span><a href="#">星期二星期二星期二</a></dd>
+      </dl>
+      <dl>
+        <dt>周三</dt>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+        <dd><span>11-3日更新</span><a href="#">星期三的新闻星期三的新闻星期三的新闻</a></dd>
+      </dl>
+      <dl>
+        <dt>周四</dt>
+        <dd><span>11-4日更新</span><a href="#">星期四星期四今天星期四</a></dd>
+        <dd><span>11-4日更新</span><a href="#">星期四星期四今天星期四</a></dd>
+        <dd><span>11-4日更新</span><a href="#">星期四星期四今天星期四</a></dd>
+		    <dd><span>11-4日更新</span><a href="#">星期四星期四今天星期四</a></dd>
+        <dd><span>11-4日更新</span><a href="#">星期四星期四今天星期四</a></dd>
+      </dl>
+      <dl>
+        <dt>周五</dt>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+        <dd><span>11-5日更新</span><a href="#">今天星期五星期五星期五</a></dd>
+      </dl>
+      <dl>
+        <dt>周六</dt>
+        <dd><span>11-6日更新</span><a href="#">今天星期六星期六</a></dd>
+        <dd><span>11-6日更新</span><a href="#">今天星期六星期六</a></dd>
+        <dd><span>11-6日更新</span><a href="#">今天星期六星期六</a></dd>
+        <dd><span>11-6日更新</span><a href="#">今天星期六星期六</a></dd>
+        <dd><span>11-6日更新</span><a href="#">今天星期六星期六</a></dd>
+      </dl>
+      <dl>
+        <dt>周日</dt>
+        <dd><span>11-7日更新</span><a href="#">今天星期日星期日</a></dd>
+        <dd><span>11-7日更新</span><a href="#">今天星期日星期日</a></dd> 
+        <dd><span>11-7日更新</span><a href="#">今天星期日星期日</a></dd>
+        <dd><span>11-7日更新</span><a href="#">今天星期日星期日</a></dd> 
+      </dl>
+    </div>
+  </div>
+</div>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script>
+function week_init(){
+	$("#weektab li").each(function(i){
+		$(this).click(function(){week_click(i);}).hover(function(){$(this).addClass('hover');},function(event){$(this).removeClass('hover');});
+	});
+	var w = new Date().getDay();
+	if (w==0){ w=6;} else {w=w-1;}
+	week_click(w);
+	$("#weekcon dl:last").css({"padding-bottom":"0","margin-bottom":"10px"});
+}
+function week_click(num){
+	$("#weektab li").removeClass('on').eq(num).addClass('on');
+	$curdl=$("#weekcon dl").eq(num);
+	var posi=$curdl.position();
+	$("#weekcon").animate({scrollTop:posi.top},200);
+}
+$(function(){
+	
+	week_init();
+});
+</script>
+<!-- 代码部分end -->
+</body>
+</html>
